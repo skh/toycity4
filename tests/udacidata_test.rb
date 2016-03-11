@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'minitest/autorun'
 require_relative '../lib/product'
 require_relative '../data/seeds'
