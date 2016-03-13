@@ -1,5 +1,7 @@
 # ToyCity 4 - Udacidata
 
+Starter code copied from: https://github.com/udacity/rbnd-toycity-part4
+
 ## Project Overview
 
 Your boss loves what you did with the inventory app in ToyCity 3, but now has another request. She wants to be able to permanently store the data in a database, and update the database through the app rather than modify the database directly by hand.
