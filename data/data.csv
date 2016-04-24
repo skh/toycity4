@@ -1,6 +1,11 @@
-id,brand,product,price
-1,WalterToys,Sticky Notes,34.0
-2,WalterToys,Sticky Notes,34.0
-3,WalterToys,Sticky Notes,34.0
-4,WalterToys,Sticky Notes,34.0
-5,WalterToys,Sticky Notes,34.0
+id,brand,name,price
+1,Blanda-Kuhn,Fantastic Wool Shirt,72.72
+2,Bruen-Kling,Rustic Wool Bottle,65.51
+3,Lubowitz Group,Practical Marble Car,31.66
+4,"Pouros, Purdy and Gaylord",Incredible Wool Table,40.62
+5,"Bins, Gutkowski and Larkin",Lightweight Concrete Clock,8.09
+6,"Carter, Keeling and Ullrich",Lightweight Cotton Watch,48.99
+7,"Armstrong, Gutmann and Franecki",Durable Iron Table,85.86
+8,Hessel Inc,Synergistic Granite Hat,54.02
+9,Shanahan-Bailey,Ergonomic Linen Clock,7.01
+10,Lakin Inc,Aerodynamic Silk Pants,75.81

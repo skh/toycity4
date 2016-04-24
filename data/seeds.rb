@@ -4,5 +4,12 @@ require 'faker'
 # fake data for testing purposes
 
 def db_seed
-  # Your code goes here!
+  10.times do
+    # you will write the "create" method as part of your project
+    attributes = {brand: Faker::Company.name,
+                  name: Faker::Commerce.product_name,
+                  price: Faker::Commerce.price
+    }
+    Product.create(attributes)
+  end
 end

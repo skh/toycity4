@@ -10,12 +10,20 @@ class Udacidata
     if attributes[:id]
       id = attributes[:id].to_i
       item = read(id)
-      puts item.to_s
-      return item unless item is nil
+      return item unless item == nil
     end
     item = self.new (attributes)
     self.save (item)
     return item
+  end
+
+  def self.all
+    all = []
+    rows = CSV.read(@@data_path)
+    (1..rows.length - 1).each do |i|
+      all << self.new({id: rows[i][0], brand: rows[i][1], name: rows[i][2], price: rows[i][3]})
+    end
+    return all
   end
 
   private
