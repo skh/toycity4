@@ -6,11 +6,11 @@ include Analyzable
 
 # Uncomment the following code once ALL your tests have passed!
 
-# db_create
-#
-# puts "-------------------"
-# puts "RETURN ALL PRODUCTS"
-# puts "-------------------"
+db_create
+
+puts "-------------------"
+puts "RETURN ALL PRODUCTS"
+puts "-------------------"
 # print Product.all
 # puts
 # puts "-----------------"
