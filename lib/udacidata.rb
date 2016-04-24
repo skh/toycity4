@@ -42,6 +42,16 @@ class Udacidata
     end
   end
 
+  def self.find(id)
+    rows = CSV.read(@@data_path)
+    (1..rows.length - 1).each do |i|
+      if rows[i][0].to_i == id
+        return self.new({id: rows[i][0], brand: rows[i][1], name: rows[i][2], price: rows[i][3]})
+      end
+    end
+    return nil
+  end
+
   private
 
   def self.read(id)
