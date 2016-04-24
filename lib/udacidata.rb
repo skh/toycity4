@@ -26,12 +26,20 @@ class Udacidata
     return all
   end
 
-  def self.first
-    return self.all[0]
+  def self.first(n=1)
+    if n == 1
+      return self.all[0]
+    else
+      return self.all[0,n]
+    end
   end
 
-  def self.last
-    return self.all[-1]
+  def self.last(n=1)
+    if n == 1
+      return self.all[-1]
+    else
+      return self.all[-1-n, n]
+    end
   end
 
   private
