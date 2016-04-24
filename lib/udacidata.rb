@@ -26,6 +26,14 @@ class Udacidata
     return all
   end
 
+  def self.first
+    return self.all[0]
+  end
+
+  def self.last
+    return self.all[-1]
+  end
+
   private
 
   def self.read(id)
