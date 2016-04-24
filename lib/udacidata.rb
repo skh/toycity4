@@ -4,12 +4,14 @@ require 'csv'
 
 class Udacidata
 
+  create_finder_methods :brand, :name
+
   @@data_path = File.dirname(__FILE__) + "/../data/data.csv"
 
   def self.create(attributes = nil)
     if attributes[:id]
       id = attributes[:id].to_i
-      item = read(id)
+      item = find(id)
       return item unless item == nil
     end
     item = self.new (attributes)
@@ -52,13 +54,18 @@ class Udacidata
     return nil
   end
 
-  private
-
-  def self.read(id)
-    CSV.open(@@data_path, "wb") do |csv|
+  def self.destroy(id)
+    item = self.find(id)
+    if item
+      items = self.all()
+      items.delete_if {|item| item.id == id }
+      self.save_all(items)
+      return item
     end
     return nil
   end
+
+  private
 
   def self.save(item)
     CSV.open(@@data_path, "ab") do |csv|
@@ -66,5 +73,15 @@ class Udacidata
     end
   end
 
-
+  def self.save_all(items)
+    CSV.open(@@data_path + ".tmp", 'ab') do |csv|
+      csv <<  ["id", "brand", "product", "price"]
+      items.each do |item|
+        csv << ["#{item.id}", "#{item.brand}", "#{item.name}", "#{item.price}"]
+      end
+    end
+    File.rename(@@data_path + ".tmp", @@data_path)
+  end
 end
+
+
