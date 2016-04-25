@@ -29,19 +29,13 @@ class Udacidata
   end
 
   def self.first(n=1)
-    if n == 1
-      return self.all[0]
-    else
-      return self.all[0,n]
-    end
+    result = self.all.first(n)
+    result.length == 1 ? result[0] : result
   end
 
   def self.last(n=1)
-    if n == 1
-      return self.all[-1]
-    else
-      return self.all[-1-n, n]
-    end
+    result = self.all.last(n)
+    result.length == 1 ? result[0] : result
   end
 
   def self.find(id)
@@ -63,6 +57,16 @@ class Udacidata
       return item
     end
     return nil
+  end
+
+  def self.where(filter={})
+    filtered = self.all
+    filter.each_key do |key|
+      filtered = filtered.select do |item|
+        item.send(key).to_s == filter.fetch(key).to_s
+      end
+    end
+    return filtered
   end
 
   private
