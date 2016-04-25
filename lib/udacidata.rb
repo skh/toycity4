@@ -70,15 +70,13 @@ class Udacidata
   end
 
   def update(attributes={})
-    # I did not manage to use the class methods self.all and self.save_all from this instance method
-    # It worked when calling them as Product.all/save_all, but not as Udacidata.all/save_all or self.all/save_all
-    # Duplicating code is better than calling the methods from Product (the subclass!)
     all = self.class.all
-    item_to_update = all.select{|item| item.id == @id}.first
+    index_to_update = all.index{|item| item.id == @id}
     attributes.each_key do |key|
-      item_to_update.send("#{key}=", attributes.fetch(key))
+      all[index_to_update].send("#{key}=", attributes.fetch(key))
     end
-    return item_to_update
+    self.class.save_all(all)
+    return all[index_to_update]
   end
 
   private
@@ -91,7 +89,7 @@ class Udacidata
 
   def self.save_all(items)
     CSV.open(@@data_path + ".tmp", 'ab') do |csv|
-      csv <<  ["id", "brand", "product", "price"]
+      csv <<  ["id", "brand", "name", "price"]
       items.each do |item|
         csv << ["#{item.id}", "#{item.brand}", "#{item.name}", "#{item.price}"]
       end
