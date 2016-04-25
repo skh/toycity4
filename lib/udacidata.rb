@@ -69,6 +69,18 @@ class Udacidata
     return filtered
   end
 
+  def update(attributes={})
+    # I did not manage to use the class methods self.all and self.save_all from this instance method
+    # It worked when calling them as Product.all/save_all, but not as Udacidata.all/save_all or self.all/save_all
+    # Duplicating code is better than calling the methods from Product (the subclass!)
+    all = self.class.all
+    item_to_update = all.select{|item| item.id == @id}.first
+    attributes.each_key do |key|
+      item_to_update.send("#{key}=", attributes.fetch(key))
+    end
+    return item_to_update
+  end
+
   private
 
   def self.save(item)
