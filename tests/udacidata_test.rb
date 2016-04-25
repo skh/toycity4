@@ -7,7 +7,6 @@ class TestUdacidata < MiniTest::Test
 
   def setup
     @data_path = File.dirname(__FILE__) + "/../data/data.csv"
-    File.delete(@data_path)
     CSV.open(@data_path, "wb") do |csv|
       csv << ["id", "brand", "name", "price"]
     end
@@ -154,7 +153,7 @@ class TestUdacidata < MiniTest::Test
   end
 
   def test_update_changes_product_info_in_database
-    database_before = CSV.read(@data_path)
+    database_before = CSV.read(@data_path)  
     product = Product.find(3).update(price: 5000.00, brand: "Hello World")
     database_after = CSV.read(@data_path)
     diff = (database_after - database_before).first
@@ -165,7 +164,7 @@ class TestUdacidata < MiniTest::Test
   # The "teardown" method always runs after the tests are done
   # "teardown" will delete the test database when tests are done
   def teardown
-    #File.delete(@data_path)
+    File.delete(@data_path)
   end
 
 end
