@@ -45,7 +45,7 @@ class Udacidata
         return self.new({id: rows[i][0], brand: rows[i][1], name: rows[i][2], price: rows[i][3]})
       end
     end
-    return nil
+    raise ProductNotFoundError
   end
 
   def self.destroy(id)
@@ -56,7 +56,6 @@ class Udacidata
       self.save_all(items)
       return item
     end
-    return nil
   end
 
   def self.where(filter={})
